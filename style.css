@@ -1,0 +1,564 @@
+/* Definiții de bază și variabile de culoare Premium */
+:root {
+    --primary-color: #1a1e21;
+    /* Slate închis / Anthracite */
+    --secondary-color: #f7f5f0;
+    /* Crem deschis premium */
+    --accent-color: #c5a880;
+    /* Aur dezactivat / Champagne */
+    --text-dark: #2b2b2b;
+    --text-light: #ffffff;
+    --text-muted: #7a7a7a;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* --- ANIMATII LA INCARCARE (LOAD) --- */
+
+/* Top bar ascuns inițial pentru animația din JS */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(26, 30, 33, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+    padding: 1.5rem 2rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
+}
+
+.top-bar.opened {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--text-light);
+}
+
+.brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 6px;
+    color: var(--accent-color);
+    margin-top: 2px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 1.5rem;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.btn-nav {
+    border: 1px solid var(--accent-color);
+    padding: 0.5rem 1.2rem;
+}
+
+.btn-nav:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color) !important;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-phone {
+    color: var(--accent-color);
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    padding: 0 5px;
+}
+
+.lang-btn.active,
+.lang-btn:hover {
+    color: var(--accent-color);
+}
+
+.separator {
+    margin: 0 2px;
+}
+
+/* Animații text Hero la încărcare */
+.animate-text-load {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUpIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+.animate-text-load-delayed {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUpIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.7s;
+}
+
+@keyframes fadeUpIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    height: 100vh;
+    min-height: 700px;
+    background-color: var(--primary-color);
+    /* Fundal texturat abstract premium în loc de imagini standard */
+    background-image: linear-gradient(rgba(26, 30, 33, 0.85), rgba(26, 30, 33, 0.95)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23131618" width="100" height="100"/><path d="M0 0h50v50H0zm50 50h50v50H50z" fill="%231a1e21" fill-opacity=".3"/></svg>');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 900px;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    color: var(--text-light);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+.hero-price {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero-price span:first-child {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+}
+
+.price-tag {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--text-light);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.btn-primary,
+.btn-secondary {
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--text-light);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* --- SECTIUNI TIPICE SI ANIMAȚIE LA SCROLL --- */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 2rem;
+}
+
+/* Starea inițială pentru elementele ce apar la scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Clasa adăugată din JS când elementul e vizibil */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.section-header p {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+}
+
+/* --- SECTIUNEA INFO --- */
+.info-section {
+    background-color: var(--secondary-color);
+}
+
+.info-section .section-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.info-text h2 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.info-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4a4a4a;
+    font-weight: 300;
+}
+
+.info-features {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.feature-item {
+    border-left: 2px solid var(--accent-color);
+    padding-left: 2rem;
+}
+
+.feature-item h3 {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* --- SECTIUNEA PRODUSE --- */
+.products-section {
+    background-color: #ffffff;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--secondary-color);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border-color: var(--accent-color);
+}
+
+.product-img-placeholder {
+    width: 50px;
+    height: 1px;
+    background-color: var(--accent-color);
+    margin: 0 auto 2rem auto;
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover .product-img-placeholder {
+    width: 100px;
+}
+
+.product-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--text-dark);
+}
+
+/* --- SECTIUNEA APLICATII --- */
+.applications-section {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.applications-section .section-header h2 {
+    color: var(--text-light);
+}
+
+.apps-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.app-item {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+}
+
+.app-item:hover {
+    padding-left: 1.5rem;
+    color: var(--accent-color);
+}
+
+.app-number {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-right: 3rem;
+}
+
+/* --- FOOTER / CONTACT --- */
+.main-footer {
+    background-color: #111416;
+    color: var(--text-light);
+    border-top: 1px solid rgba(197, 168, 128, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+}
+
+.footer-info h2 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.footer-info p {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+.footer-phone {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+.footer-phone:hover {
+    color: var(--text-light);
+}
+
+.footer-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+}
+
+.detail-block h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.detail-block p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- RESPONSIVITATE (MEDIA QUERIES) --- */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-section .section-container,
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .nav-links,
+    .nav-phone {
+        display: none;
+        /* Simplificare pentru mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 2.3rem;
+    }
+
+    .price-tag {
+        font-size: 2.3rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-container {
+        padding: 5rem 1.5rem;
+    }
+}
